@@ -1,6 +1,7 @@
 #include "Window.hpp"
 
 struct Editor: public Window{
+    Editor(): Window(1280, 720, "Dear ImGui GLFW+OpenGL3 example") {}
     virtual void tick() override{
         // Our state
         bool show_demo_window = true;

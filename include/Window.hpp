@@ -5,7 +5,7 @@
 #include "imgui_impl_opengl3.h"
 
 struct Window{
-    Window(ImVec4 clear_color=ImVec4(0.45f, 0.55f, 0.60f, 1.00f));
+    Window(int width, int height, const char *title, ImVec4 clear_color=ImVec4(0.45f, 0.55f, 0.60f, 1.00f));
     virtual void tick() = 0;
     virtual ~Window();
 

@@ -52,7 +52,7 @@ struct Window::Impl{
 };
 const char *Window::glsl_version() const { return _glsl_version; }
 
-Window::Window(ImVec4 clear_color): io{nullptr}, clear_color{clear_color}, impl{std::make_shared<Window::Impl>()} {
+Window::Window(int width, int height, const char *title, ImVec4 clear_color): io{nullptr}, clear_color{clear_color}, impl{std::make_shared<Window::Impl>()} {
     static bool first1 = true;
 #if defined(IMGUI_IMPL_OPENGL_ES2)
     // GL ES 2.0 + GLSL 100
@@ -91,7 +91,7 @@ Window::Window(ImVec4 clear_color): io{nullptr}, clear_color{clear_color}, impl{
     }
 
     // Create window with graphics context
-    impl->window = glfwCreateWindow(1280, 720, "Dear ImGui GLFW+OpenGL3 example", nullptr, nullptr);
+    impl->window = glfwCreateWindow(width, height, title, nullptr, nullptr);
     if (impl->window == nullptr)
         throw std::runtime_error("Failed to create glfw window");
     glfwMakeContextCurrent(impl->window);
