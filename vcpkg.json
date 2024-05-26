@@ -1,0 +1,16 @@
+{
+    "name": "image-editor",
+    "version-semver": "0.0.1",
+    "supports": "(linux | windows) & (x64 | arm64)",
+    "description":"An image editing program",
+    "homepage":"https://github.com/DavidPetkovsek/ImageEditor",
+    "dependencies": [
+        "opencv4",
+        "glfw3",
+        {
+            "name":"imgui",
+            "features":["docking-experimental", "freetype-lunasvg", "glfw-binding", "opengl3-binding"]
+        },
+        "implot"
+    ]
+}

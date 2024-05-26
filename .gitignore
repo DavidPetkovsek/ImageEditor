@@ -1,0 +1,8 @@
+# old/
+*.png
+
+# Build folders
+vcpkg/
+bin/
+build/
+.vscode/
