@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.24.0)
 
-if(NOT DEFINED CMAKE_C_COMPILER)
+if(NOT DEFINED CMAKE_C_COMPILER AND WIN32)
   set(CMAKE_C_COMPILER "clang-cl.exe")
 endif()
-if(NOT DEFINED CMAKE_CXX_COMPILER)
+if(NOT DEFINED CMAKE_CXX_COMPILER AND WIN32)
   set(CMAKE_CXX_COMPILER "clang-cl.exe")
 endif()
 
@@ -13,16 +13,6 @@ if( NOT CMAKE_BUILD_TYPE )
     set(CMAKE_BUILD_TYPE RelWithDebugInfo)
 ENDIF()
 file(WRITE "${CMAKE_BINARY_DIR}/BUILD_TYPE.txt" ${CMAKE_BUILD_TYPE})
-
-# include(FetchContent)
-# set(FETCHCONTENT_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/FetchContent_deps")
-# set(FETCHCONTENT_QUIET OFF)
-# message(STATUS "Retrieving nlohmann/json using FetchContent, this may take a while...")
-# FetchContent_Declare(json
-#   GIT_REPOSITORY https://github.com/nlohmann/json.git
-#   GIT_TAG v3.11.3)
-# FetchContent_MakeAvailable(json)
-# message(STATUS "nlohmann/json retrieved!")
 
 # Function to read a JSON file
 file(READ "${CMAKE_SOURCE_DIR}/vcpkg.json" VCPKG_JSON_FILE_CONTENT)
@@ -47,7 +37,9 @@ set(VERSION_SHORT ${VERSION_MAJOR}.${VERSION_MINOR})
 set(VERSION ${VERSION_SHORT}.${VERSION_PATCH})
 set(Boost_NO_SYSTEM_PATHS ON)
 set(Boost_NO_WARN_NEW_VERSIONS ON)
-set(CMAKE_TOOLCHAIN_FILE "vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "vcpkg toolchain file")
+if( NOT CMAKE_TOOLCHAIN_FILE )
+  set(CMAKE_TOOLCHAIN_FILE "vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "vcpkg toolchain file")
+endif()
 project("${pname}"
         VERSION ${VERSION}
         DESCRIPTION "${pdescription}"
