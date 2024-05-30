@@ -13,6 +13,7 @@ This project is to create a nice multi-os high performance image editor. It will
         1. C++ Clang Compiler for Windows
         2. MSBuild support for LLVM (clang-cl) toolset
         3. CMake
+        4. git
 2. Have Git installed
 3. Have vcpkg.
     - *Note: the project default assumes it was cloned in the root of the project. If it is not, use `"-DCMAKE_TOOLCHAIN_FILE=${VCPKG_INSTALL_LOC}/vcpkg/scripts/buildsystems/vcpkg.cmake"` with the `cmake` command in build.*
