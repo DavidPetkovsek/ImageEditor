@@ -5,7 +5,7 @@ This project is to create a nice multi-os high performance image editor. It will
 
 ## Build Instructions
 
-> Prerequisites are for windows. It should be compatible on linux (without visual studio) `sudo apt install build-essential cmake ninja-build`.
+> Prerequisites are for windows. It should be compatible on linux (without visual studio) `sudo apt install build-essential cmake ninja-build git`.
 
 ### Prerequisites
 1. Have Visual Studio installed:
@@ -14,8 +14,7 @@ This project is to create a nice multi-os high performance image editor. It will
         2. MSBuild support for LLVM (clang-cl) toolset
         3. CMake
         4. git
-2. Have Git installed
-3. Have vcpkg.
+2. Have vcpkg.
     - *Note: the project default assumes it was cloned in the root of the project. If it is not, use `"-DCMAKE_TOOLCHAIN_FILE=${VCPKG_INSTALL_LOC}/vcpkg/scripts/buildsystems/vcpkg.cmake"` with the `cmake` command in build.*
 ```ps1
 git clone https://github.com/microsoft/vcpkg.git -b 2024.04.26
